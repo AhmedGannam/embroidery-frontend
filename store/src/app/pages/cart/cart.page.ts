@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cart',
@@ -6,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.page.scss'],
   standalone: false
 })
-export class CartPage implements OnInit {
+export class CartPage {
+  constructor(private modalCtrl: ModalController) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  dismiss() {
+    this.modalCtrl.dismiss();
   }
-
 }
