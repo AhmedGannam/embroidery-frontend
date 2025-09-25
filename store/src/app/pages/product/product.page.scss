@@ -1,0 +1,377 @@
+.old-money-theme {
+  --ion-background-color: #1e3432; // darkslategrey
+  --ion-text-color: #fee5bd; // bisque
+}
+
+.category-filter {
+  padding: 20px 20px 0;
+  
+  ion-segment {
+    --background: rgba(254, 229, 189, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(254, 229, 189, 0.2);
+    
+    ion-segment-button {
+      --color: rgba(254, 229, 189, 0.7);
+      --color-checked: #fee5bd;
+      --indicator-color: #fee5bd;
+      
+      ion-label {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.products-section {
+  padding: 20px;
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    
+    .product-card {
+      background: rgba(254, 229, 189, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(254, 229, 189, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        
+        .product-image-container img {
+          transform: scale(1.05);
+        }
+      }
+      
+      // Option 1: Using img tag (Recommended)
+      .product-image-container {
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: scale-down;
+          object-position: center;
+          transition: transform 0.3s ease;
+        }
+        
+        .price-tag {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          background: #fee5bd;
+          color: #1e3432;
+          font-weight: 600;
+          padding: 5px 10px;
+          z-index: 2;
+        }
+        
+        .category-badge {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          background: #1e3432;
+          color: #fee5bd;
+          text-transform: uppercase;
+          font-size: 0.7rem;
+          font-weight: 600;
+          padding: 4px 8px;
+          z-index: 2;
+          
+          &.tshirt { background: #8b7355; }
+          &.hoodie { background: #2c5530; }
+          &.pants { background: #5d4e3f; }
+        }
+        
+        .quick-view {
+          position: absolute;
+          bottom: 12px;
+          right: 12px;
+          --color: #fee5bd;
+          --background-hover: rgba(254, 229, 189, 0.1);
+          z-index: 2;
+        }
+
+        // Add overlay for better text readability
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 40%;
+          background: linear-gradient(transparent, rgba(30, 52, 50, 0.3));
+          pointer-events: none;
+          z-index: 1;
+        }
+      }
+      
+      // Option 2: Using background-image (Alternative)
+      .aspect-ratio-helper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 75%; // 4:3 aspect ratio
+        
+        .product-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: rgba(254, 229, 189, 0.05);
+          
+          .price-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #fee5bd;
+            color: #1e3432;
+            font-weight: 600;
+            padding: 5px 10px;
+            z-index: 2;
+          }
+          
+          .category-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #1e3432;
+            color: #fee5bd;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            z-index: 2;
+            
+            &.tshirt { background: #8b7355; }
+            &.hoodie { background: #2c5530; }
+            &.pants { background: #5d4e3f; }
+          }
+          
+          .quick-view {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            --color: #fee5bd;
+            --background-hover: rgba(254, 229, 189, 0.1);
+            z-index: 2;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(transparent, rgba(30, 52, 50, 0.3));
+            pointer-events: none;
+            z-index: 1;
+          }
+        }
+      }
+      
+      .product-info {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        
+        .product-name {
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin: 0 0 8px;
+          color: #fee5bd;
+          line-height: 1.3;
+        }
+        
+        .product-material {
+          color: rgba(254, 229, 189, 0.8);
+          font-size: 0.9rem;
+          margin: 0 0 10px;
+          font-weight: 500;
+        }
+        
+        .product-description {
+          color: rgba(254, 229, 189, 0.7);
+          font-size: 0.85rem;
+          margin: 0 0 15px;
+          line-height: 1.4;
+          flex-grow: 1;
+        }
+        
+        .size-selector {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 20px;
+          flex-wrap: wrap;
+          
+          .size-option {
+            padding: 6px 12px;
+            border: 1px solid rgba(254, 229, 189, 0.3);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(254, 229, 189, 0.8);
+            min-width: 35px;
+            text-align: center;
+            
+            &.selected {
+              background: #fee5bd;
+              color: #1e3432;
+              border-color: #fee5bd;
+              font-weight: 600;
+            }
+            
+            &:hover {
+              border-color: #fee5bd;
+              background: rgba(254, 229, 189, 0.1);
+            }
+          }
+        }
+        
+        .product-actions {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: auto;
+          
+          .wishlist-btn {
+            --color: #fee5bd;
+            --color-hover: #ff6b6b;
+            width: 44px;
+            height: 44px;
+            
+            ion-icon {
+              font-size: 1.3rem;
+            }
+          }
+          
+          .add-to-cart-btn {
+            --background: #fee5bd;
+            --color: #1e3432;
+            --border-radius: 25px;
+            --padding-start: 20px;
+            --padding-end: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            height: 44px;
+            white-space: nowrap;
+            
+            ion-icon {
+              margin-right: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: rgba(254, 229, 189, 0.7);
+  
+  ion-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: rgba(254, 229, 189, 0.5);
+  }
+  
+  h3 {
+    color: #fee5bd;
+    margin-bottom: 10px;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .category-filter {
+    padding: 15px 15px 0;
+    
+    ion-segment {
+      ion-segment-button {
+        ion-label {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+  
+  .products-section {
+    padding: 15px;
+    
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      
+      .product-card {
+        .product-image-container {
+          height: 220px;
+        }
+        
+        .aspect-ratio-helper {
+          padding-bottom: 65%; // Adjust aspect ratio for mobile
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .products-section {
+    .products-grid {
+      .product-card {
+        .product-info {
+          padding: 15px;
+          
+          .product-actions {
+            flex-direction: column;
+            gap: 10px;
+            
+            .wishlist-btn {
+              align-self: flex-start;
+            }
+            
+            .add-to-cart-btn {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Additional utility classes for image optimization
+.image-loading {
+  background: linear-gradient(90deg, rgba(254, 229, 189, 0.1) 25%, rgba(254, 229, 189, 0.05) 50%, rgba(254, 229, 189, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

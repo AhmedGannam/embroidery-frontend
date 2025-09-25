@@ -1,4 +1,71 @@
 <app-toolbar title="Products"></app-toolbar>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="old-money-theme">
+  <!-- Category Filter -->
+  <section class="category-filter">
+    <ion-segment [(ngModel)]="selectedCategory" (ionChange)="filterProducts()">
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tshirt">
+        <ion-label>T-Shirts</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="hoodie">
+        <ion-label>Hoodies</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="pants">
+        <ion-label>Pants</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="products-section">
+    <div class="products-grid">
+      <div class="product-card" *ngFor="let product of filteredProducts">
+        <div class="product-image-container">
+          <img [src]="product.image" [alt]="product.name" />
+          <ion-badge class="price-tag">${{product.price}}</ion-badge>
+          <ion-badge class="category-badge" [class]="product.category">
+            {{product.category === 'tshirt' ? 'T-Shirt' : product.category}}
+          </ion-badge>
+          <ion-button fill="clear" class="quick-view" (click)="quickView(product)">
+            <ion-icon name="eye"></ion-icon>
+          </ion-button>
+        </div>
+        
+        <div class="product-info">
+          <h3 class="product-name">{{product.name}}</h3>
+          <p class="product-material">{{product.material}}</p>
+          <p class="product-description">{{product.description}}</p>
+          
+          <div class="size-selector">
+            <span *ngFor="let size of product.sizes" 
+                  class="size-option" 
+                  [class.selected]="selectedSizes[product.id] === size"
+                  (click)="selectSize(product.id, size)">
+              {{size}}
+            </span>
+          </div>
+          
+          <div class="product-actions">
+            <ion-button fill="clear" class="wishlist-btn" (click)="toggleWishlist(product)">
+              <ion-icon [name]="product.isInWishlist ? 'heart' : 'heart-outline'"></ion-icon>
+            </ion-button>
+            <ion-button class="add-to-cart-btn" (click)="addToCart(product)">
+              <ion-icon name="bag-handle-outline"></ion-icon>
+              Add to Cart
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="filteredProducts.length === 0">
+    <ion-icon name="shirt-outline"></ion-icon>
+    <h3>No Products Found</h3>
+    <p>Try selecting a different category</p>
+  </div>
 </ion-content>

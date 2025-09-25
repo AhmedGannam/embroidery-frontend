@@ -1,0 +1,95 @@
+ion-toolbar {
+  --background: #1e3432; // darkslategrey background
+  --color: #fee5bd; // bisque text color
+  --min-height: 70px;
+}
+
+.toolbar-content.centered {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  
+  .logo-title-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.empty-buttons {
+  visibility: hidden;
+  width: 44px; // Same width as cart button for balance
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.title {
+  color: #fee5bd; // bisque color
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-button {
+  --color: #fee5bd; // bisque color
+  --background-hover: rgba(254, 229, 189, 0.1);
+  --border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  
+  ion-icon {
+    font-size: 1.4rem;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  ion-toolbar {
+    --min-height: 60px;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .cart-button {
+    width: 40px;
+    height: 40px;
+    
+    ion-icon {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-title-container {
+    gap: 8px;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .empty-buttons {
+    width: 40px;
+  }
+}

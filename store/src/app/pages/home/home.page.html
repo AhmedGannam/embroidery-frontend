@@ -1,5 +1,82 @@
-<app-toolbar title="Home"></app-toolbar>
+<app-toolbar title="Barakah Store"></app-toolbar>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="old-money-theme">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <img src="assets/icon/logo.png" alt="logo" width="150">
+      <h1 class="hero-title">BARAKAH STORE</h1>
+      <h1 class="hero-title">Timeless Essentials</h1>
+      <p class="hero-subtitle">Premium T-Shirts, Hoodies & Pants for the modern gentleman</p>
+      <ion-button class="cta-button"  [routerLink]="['/tabs/products']">Shop Collection</ion-button>
+    </div>
+  </section>
 
+  <!-- Featured Categories -->
+  <section class="categories-section">
+    <h2 class="section-title">Our Collections</h2>
+    <div class="categories-grid">
+      <div class="category-card" *ngFor="let category of categories" 
+            [routerLink]="['/tabs/products']">
+        <div class="category-image" [style.background-image]="'url(' + category.image + ')'"></div>
+        <h3>{{category.name}}</h3>
+        <p>{{category.description}}</p>
+        <ion-button fill="clear" class="shop-category-btn"  [routerLink]="['/tabs/products']">Shop Now</ion-button>
+      </div>
+    </div>
+  </section>
+  <!-- Size Guide -->
+  <section class="size-guide-section">
+    <h2 class="section-title">Size Guide</h2>
+    <div class="size-guide">
+      <div class="size-chart">
+        <h3>T-Shirts</h3>
+        <table>
+          <tr><th>Size</th><th>Chest</th><th>Length</th></tr>
+          <tr><td>M</td><td>38-40"</td><td>29"</td></tr>
+          <tr><td>L</td><td>40-42"</td><td>30"</td></tr>
+          <tr><td>XL</td><td>42-44"</td><td>31"</td></tr>
+        </table>
+      </div>
+       <div class="size-chart">
+        <h3>Hoodies</h3>
+        <table>
+          <tr><th>Size</th><th>Chest</th><th>Length</th></tr>
+          <tr><td>M</td><td>38-40"</td><td>29"</td></tr>
+          <tr><td>L</td><td>40-42"</td><td>30"</td></tr>
+          <tr><td>XL</td><td>42-44"</td><td>31"</td></tr>
+           <tr><td>XLL</td><td>44-46"</td><td>32"</td></tr>
+        </table>
+      </div>
+      <div class="size-chart">
+        <h3>Pants</h3>
+        <table>
+          <tr><th>Size</th><th>Waist</th><th>Inseam</th></tr>
+          <tr><td>30</td><td>30"</td><td>32"</td></tr>
+          <tr><td>32</td><td>32"</td><td>32"</td></tr>
+          <tr><td>34</td><td>34"</td><td>34"</td></tr>
+          <tr><td>36</td><td>36"</td><td>34"</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="values-section">
+    <div class="value-item">
+      <ion-icon name="shirt"></ion-icon>
+      <h3>Premium Fabrics</h3>
+      <p>100% Cotton & Premium Blends</p>
+    </div>
+    <div class="value-item">
+      <ion-icon name="cut"></ion-icon>
+      <h3>Perfect Fit</h3>
+      <p>Designed for comfort & style</p>
+    </div>
+    <div class="value-item">
+      <ion-icon name="leaf"></ion-icon>
+      <h3>Sustainable</h3>
+      <p>Eco-friendly production</p>
+    </div>
+  </section>
 </ion-content>

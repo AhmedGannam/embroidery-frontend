@@ -1,10 +1,20 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>{{ title }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="openCart()">
-        <ion-icon name="bag-handle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar>
+    <div class="toolbar-content centered">
+      <ion-buttons slot="start" class="empty-buttons">
+        <!-- Empty for balance -->
+      </ion-buttons>
+      
+      <div class="logo-title-container">
+        <img src="assets/icon/logo.png" alt="logo" class="logo">
+        <ion-title class="title">BARAKAH STORE</ion-title>
+      </div>
+      
+      <ion-buttons slot="end">
+        <ion-button (click)="openCart()" class="cart-button">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
   </ion-toolbar>
 </ion-header>
