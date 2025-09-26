@@ -13,48 +13,20 @@ export class HomePage implements OnInit {
   categories = [
     {
       id: 1,
-      name: 'Tailored Suits',
-      description: 'Bespoke craftsmanship',
-      image: 'assets/images/suits.jpg'
+      name: 'Zipper T-Shirts',
+      image: 'assets/icon/hoodies (1).png'
     },
     {
       id: 2,
-      name: 'Dress Shirts',
-      description: 'Premium cotton collection',
+      name: 'Classic Hoodies',
       image: 'assets/images/shirts.jpg'
     },
     {
       id: 3,
-      name: 'Accessories',
-      description: 'Leather & silk essentials',
+      name: 'Pants',
       image: 'assets/images/accessories.jpg'
     }
   ];
-
-  featuredProducts = [
-    {
-      id: 1,
-      name: 'Navy Blue Blazer',
-      price: 299,
-      material: 'Italian Wool',
-      image: 'assets/images/blazer.jpg'
-    },
-    {
-      id: 2,
-      name: 'Cashmere Sweater',
-      price: 189,
-      material: 'Pure Cashmere',
-      image: 'assets/images/sweater.jpg'
-    },
-    {
-      id: 3,
-      name: 'Oxford Dress Shoes',
-      price: 249,
-      material: 'Premium Leather',
-      image: 'assets/images/shoes.jpg'
-    }
-  ];
-
   constructor(
     private alertController: AlertController,
     private toastController: ToastController

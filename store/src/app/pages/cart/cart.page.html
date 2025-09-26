@@ -10,5 +10,89 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h2>Cart is empty (for now 😎)</h2>
+  <!-- Empty Cart State -->
+  <div *ngIf="cartItems.length === 0" class="empty-cart">
+    <ion-icon name="cart-outline" class="empty-icon"></ion-icon>
+    <h2>Your cart is empty</h2>
+    <p>Add some items to get started!</p>
+    <ion-button expand="block" (click)="navigateToProducts()" color="primary">
+      Continue Shopping
+    </ion-button>
+  </div>
+
+  <!-- Cart with Items -->
+  <div *ngIf="cartItems.length > 0">
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of cartItems; trackBy: trackByItemId">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img [src]="item.image" [alt]="item.name" />
+          </ion-thumbnail>
+          
+          <ion-label>
+            <h3>{{ item.name }}</h3>
+            <p>Size: {{ item.size }}</p>
+            <p class="price">${{ item.price }}</p>
+            
+            <div class="quantity-controls">
+              <ion-button fill="clear" size="small" (click)="decreaseQuantity(item)">
+                <ion-icon name="remove-circle-outline"></ion-icon>
+              </ion-button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <ion-button fill="clear" size="small" (click)="increaseQuantity(item)">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-label>
+          
+          <ion-text slot="end" class="item-total">
+            ${{ (item.price * item.quantity).toFixed(2) }}
+          </ion-text>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="removeItem(item)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <!-- Order Summary -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Order Summary</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>${{ calculateSubtotal().toFixed(2) }}</span>
+        </div>
+        
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span>{{ calculateShipping() }}</span>
+        </div>
+        
+        <ion-item-divider></ion-item-divider>
+        
+        <div class="summary-row total">
+          <strong>Total</strong>
+          <strong>${{ calculateTotal().toFixed(2) }}</strong>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <ion-button expand="block" color="primary" (click)="proceedToCheckout()">
+        Proceed to Checkout
+      </ion-button>
+      
+      <ion-button expand="block" fill="outline" (click)="continueShopping()">
+        Continue Shopping
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

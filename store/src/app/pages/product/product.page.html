@@ -1,4 +1,16 @@
 <app-toolbar title="Products"></app-toolbar>
+<!-- Add to the ion-header or create one if not exists -->
+<!-- <ion-header>
+  <ion-toolbar color="light">
+    <ion-title>Products</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCart()">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="danger" *ngIf="cartItemCount > 0">{{cartItemCount}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
 
 <ion-content [fullscreen]="true" class="old-money-theme">
   <!-- Category Filter -->
@@ -25,7 +37,7 @@
       <div class="product-card" *ngFor="let product of filteredProducts">
         <div class="product-image-container">
           <img [src]="product.image" [alt]="product.name" />
-          <ion-badge class="price-tag">${{product.price}}</ion-badge>
+          <ion-badge class="price-tag">₹{{product.price}}</ion-badge>
           <ion-badge class="category-badge" [class]="product.category">
             {{product.category === 'tshirt' ? 'T-Shirt' : product.category}}
           </ion-badge>
